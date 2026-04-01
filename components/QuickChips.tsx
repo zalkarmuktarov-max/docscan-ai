@@ -19,9 +19,16 @@ function ChipRow({ chips, onSelect }: { chips: string[]; onSelect: (t: string) =
         <button
           key={chip}
           onClick={() => onSelect(chip)}
-          className="px-3 py-1.5 rounded-full text-[12px] text-[#6b6b6b] bg-white
-            border border-[rgba(0,0,0,0.15)] transition-colors text-left
-            hover:border-[#2563eb] hover:text-[#2563eb]"
+          className="px-3 py-1.5 rounded-full text-[12px] transition-colors text-left"
+          style={{ color: '#8892a4', border: '0.5px solid rgba(0,229,255,0.2)', backgroundColor: 'transparent' }}
+          onMouseEnter={e => {
+            e.currentTarget.style.backgroundColor = 'rgba(0,229,255,0.1)';
+            e.currentTarget.style.color = '#00e5ff';
+          }}
+          onMouseLeave={e => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+            e.currentTarget.style.color = '#8892a4';
+          }}
         >
           {chip}
         </button>

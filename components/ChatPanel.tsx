@@ -78,7 +78,8 @@ export default function ChatPanel({ analysisId, initialQuestion, suggestedQuesti
   };
 
   return (
-    <div className="bg-white border-[0.5px] border-[rgba(0,0,0,0.08)] rounded-[12px] p-4 flex flex-col min-h-[380px]">
+    <div className="rounded-[12px] p-4 flex flex-col min-h-[380px]"
+      style={{ backgroundColor: '#111827', border: '0.5px solid rgba(255,255,255,0.08)' }}>
       {/* Сообщения */}
       <div className="flex-1 flex flex-col gap-4 overflow-y-auto mb-4">
         {messages.map((m, i) => (
@@ -88,15 +89,17 @@ export default function ChatPanel({ analysisId, initialQuestion, suggestedQuesti
         {/* Индикатор набора */}
         {isTyping && (
           <div className="flex items-end gap-2.5">
-            <div className="w-7 h-7 rounded-full bg-[#eff6ff] flex items-center justify-center text-[11px] font-medium text-[#2563eb] shrink-0">
+            <div className="w-7 h-7 rounded-full shrink-0 flex items-center justify-center text-[11px] font-medium"
+              style={{ background: 'rgba(0,229,255,0.12)', color: '#00e5ff', border: '0.5px solid rgba(0,229,255,0.3)' }}>
               AI
             </div>
-            <div className="bg-[#f8f8f6] px-3.5 py-2.5 rounded-[2px_12px_12px_12px] flex gap-1.5 items-center">
+            <div className="px-3.5 py-2.5 rounded-[2px_12px_12px_12px] flex gap-1.5 items-center"
+              style={{ backgroundColor: '#1a2332', border: '0.5px solid rgba(255,255,255,0.05)' }}>
               {[0, 150, 300].map(delay => (
                 <span
                   key={delay}
-                  className="w-1.5 h-1.5 rounded-full bg-[#9b9b9b]"
-                  style={{ animation: `blink 1.2s infinite ${delay}ms` }}
+                  className="w-1.5 h-1.5 rounded-full"
+                  style={{ backgroundColor: '#8892a4', animation: `blink 1.2s infinite ${delay}ms` }}
                 />
               ))}
             </div>
@@ -120,15 +123,20 @@ export default function ChatPanel({ analysisId, initialQuestion, suggestedQuesti
           value={input}
           onChange={e => setInput(e.target.value)}
           placeholder="Спросите про договор..."
-          className="flex-1 px-3.5 py-2.5 text-[14px] text-[#1a1a1a] bg-white
-            border-[0.5px] border-[rgba(0,0,0,0.08)] rounded-[8px] outline-none
-            focus:border-[#2563eb] transition-colors placeholder:text-[#9b9b9b]"
+          className="flex-1 px-3.5 py-2.5 text-[14px] rounded-[8px] outline-none transition-colors"
+          style={{
+            backgroundColor: '#1a2332',
+            color: '#f0f0f0',
+            border: '0.5px solid rgba(255,255,255,0.1)',
+          }}
+          onFocus={e => (e.currentTarget.style.border = '0.5px solid rgba(0,229,255,0.5)')}
+          onBlur={e => (e.currentTarget.style.border = '0.5px solid rgba(255,255,255,0.1)')}
         />
         <button
           type="submit"
           disabled={isTyping || !input.trim()}
-          className="w-9 h-9 rounded-full bg-[#2563eb] flex items-center justify-center shrink-0
-            disabled:opacity-40 transition-opacity hover:bg-[#1d4ed8]"
+          className="w-9 h-9 rounded-full flex items-center justify-center shrink-0 disabled:opacity-40 transition-opacity"
+          style={{ background: 'linear-gradient(135deg, #00e5ff, #0088cc)' }}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
             stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
