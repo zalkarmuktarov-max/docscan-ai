@@ -32,6 +32,7 @@ export interface AnalysisResult {
   obligations: Obligation[];
   risks: Risk[];
   summary: string;
+  suggested_questions?: string[];
 }
 
 export interface Analysis {

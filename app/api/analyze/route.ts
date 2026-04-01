@@ -36,7 +36,8 @@ const SYSTEM_PROMPT = `Ты — юридический AI-ассистент. П
   "key_terms": [{ "label": "string", "value": "string" }],
   "obligations": [{ "party": "string", "color": "blue" | "green", "text": "string" }],
   "risks": [{ "text": "string — краткое описание + номер пункта", "severity": "high" | "medium" | "low", "details": "string — подробное объяснение", "clause": "string — номер пункта" }],
-  "summary": "string — 2-3 предложения общая оценка"
+  "summary": "string — 2-3 предложения общая оценка",
+  "suggested_questions": ["string", "string", "string"] — ровно 3 конкретных вопроса которые пользователь мог бы задать по этому документу, со ссылками на реальные пункты и условия договора
 }`;
 
 async function analyzeWithClaude(fileText: string): Promise<AnalysisResult> {

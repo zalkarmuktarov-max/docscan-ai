@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import QuickChips from "./QuickChips";
+import type { Risk } from "@/types/analysis";
 
 interface Message {
   role: "user" | "assistant";
@@ -12,6 +13,8 @@ interface Message {
 interface ChatPanelProps {
   analysisId: string;
   initialQuestion?: string | null;
+  suggestedQuestions?: string[];
+  risks?: Risk[];
 }
 
 const WELCOME: Message = {
@@ -20,7 +23,7 @@ const WELCOME: Message = {
     "Я проанализировал ваш договор. Задавайте любые вопросы по содержанию — я отвечу со ссылками на конкретные пункты.",
 };
 
-export default function ChatPanel({ analysisId, initialQuestion }: ChatPanelProps) {
+export default function ChatPanel({ analysisId, initialQuestion, suggestedQuestions, risks }: ChatPanelProps) {
   const [messages, setMessages] = useState<Message[]>([WELCOME]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
@@ -104,7 +107,11 @@ export default function ChatPanel({ analysisId, initialQuestion }: ChatPanelProp
       </div>
 
       {/* Быстрые вопросы */}
-      <QuickChips onSelect={sendMessage} />
+      <QuickChips
+        onSelect={sendMessage}
+        suggested={suggestedQuestions}
+        riskQuestions={risks?.map(r => `Как защититься от: ${r.text.replace(/\s*—\s*п\..*$/, "")}?`)}
+      />
 
       {/* Поле ввода */}
       <form onSubmit={handleSubmit} className="flex gap-2 items-center">

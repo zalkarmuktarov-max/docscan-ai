@@ -161,6 +161,8 @@ export default function ResultTabs({ analysisId, filename, result }: Props) {
         <ChatPanel
           analysisId={analysisId}
           initialQuestion={chatQuestion}
+          suggestedQuestions={result.suggested_questions}
+          risks={result.risks}
         />
       )}
     </>
