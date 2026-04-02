@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import ChatPanel from "@/components/ChatPanel";
-import NeuralBackground from "@/components/NeuralBackground";
 import type { AnalysisResult } from "@/types/analysis";
 
 interface Props {
@@ -23,7 +22,6 @@ export default function ResultTabs({ analysisId, filename, result }: Props) {
 
   return (
     <>
-      <NeuralBackground />
       <div style={{ position: 'relative', zIndex: 1 }}>
 
         {/* Шапка */}

@@ -30,14 +30,14 @@ export default async function ResultPage({ params }: PageProps) {
 
   if (!result) {
     return (
-      <main className="min-h-screen bg-[#f1f0ec] flex items-center justify-center">
-        <p className="text-[#6b6b6b] text-[14px]">Анализ ещё выполняется...</p>
+      <main className="min-h-screen flex items-center justify-center">
+        <p className="text-[14px]" style={{ color: '#8892a4' }}>Анализ ещё выполняется...</p>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-[#f1f0ec] px-4 py-8">
+    <main className="min-h-screen px-4 py-8">
       <div className="w-full max-w-[720px] mx-auto">
         <ResultTabs
           analysisId={data.id}
